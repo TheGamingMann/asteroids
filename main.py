@@ -8,6 +8,7 @@ from asteroidfield import *
 def main():
     pygame.init()
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+    image = pygame.transform.scale(pygame.image.load("bg.jpg"), (SCREEN_WIDTH, SCREEN_HEIGHT))
     clock = pygame.time.Clock()
     dt = 0
     updateable = pygame.sprite.Group()
@@ -24,7 +25,7 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return
-        screen.fill((0, 0, 0))
+        screen.blit(image, (0, 0))
         for item in drawable:
             item.draw(screen)
         updateable.update(dt)
